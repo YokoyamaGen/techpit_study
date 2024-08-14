@@ -48,3 +48,7 @@ useEffectの第二引数が空配列だとコンポーネントが描画され�
         - Material UIとの相性が良い。
     - デメリット
         - パフォーマンスを低下させる書き方ができる。styled-componentsにpropsとして、値を渡すことができるため、propsが渡される頻度が多いと、styled-componentsが何度も初期化されてしまい、パフォーマンスが低下してしまう。
+
+- React Fooks API
+    - useState。
+    - useReducer。複数コンポーネントから呼び出されるstateに関する処理を共通化できる。
