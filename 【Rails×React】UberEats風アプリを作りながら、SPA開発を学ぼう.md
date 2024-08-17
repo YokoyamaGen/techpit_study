@@ -52,3 +52,7 @@ useEffectの第二引数が空配列だとコンポーネントが描画され�
 - React Fooks API
     - useState。
     - useReducer。複数コンポーネントから呼び出されるstateに関する処理を共通化できる。
+ 
+- Railsの複数コントローラーの共通処理
+    - ApplicationController。ログイン機能などを書いたりする
+    - concern。複数のコントローラーやモデルで共通処理を書く。ただし、モデル固有の処理はモデルに記述する。
