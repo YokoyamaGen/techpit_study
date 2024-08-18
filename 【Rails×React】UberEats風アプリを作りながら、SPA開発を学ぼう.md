@@ -58,3 +58,24 @@ useEffectの第二引数が空配列だとコンポーネントが描画され�
     - concern。複数のコントローラーやモデルで共通処理を書く。ただし、モデル固有の処理はモデルに記述する。
 
 - コンポーネント設計をする際に子コンポーネントにはstateや複雑なロジックを持たせないことで、汎用性が高くなる。
+
+- リファクタリング
+    - バックエンド
+        - 無駄な配列操作をしていないかをチェックすることで、パフォーマンスの向上を図る。以下コードのようにline_foodsの展開を3回しているのを1回でまとめることで、無駄な処理を減らす。
+          ```
+          if line_foods.exists?
+              render json: {
+                line_food_ids: line_foods.map { |line_food| line_food.id },
+                restaurant: line_foods[0].restaurant,
+                count: line_foods.sum { |line_food| line_food[:count] },
+                amount: line_foods.sum { |line_food| line_food.total_amount },
+              }, status: :ok
+          ```
+
+    - フロントエンド
+        - 条件分岐をわかりやすくする。A && Bという条件分岐があった場合、条件を関数化した方が読みやすくなる。
+     
+    - リファクタリングする際には以下を意識する。
+        - コードの読みやすさ
+        - パフォーマンスに改善の余地がないか
+        - テストのしやすさ
